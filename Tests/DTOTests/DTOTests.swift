@@ -10,6 +10,7 @@ import DTOMacros
 
 let testMacros: [String: Macro.Type] = [
   "DTO": DTOMacro.self,
+  "Property": PropertyMacro.self,
 ]
 #endif
 
@@ -101,7 +102,7 @@ final class DTOTests: XCTestCase {
     struct TestModel {
       let name: String
       let age: Int
-      @Property(key: "created_at") let createTime: Date
+      let createTime: Date
 
         enum CodingKeys: String, CodingKey {
             case name
@@ -138,7 +139,7 @@ final class DTOTests: XCTestCase {
     struct TestModel {
       let name: String
       let age: Int
-      @Property(key: "user_information") let userInfo: UserInfo
+      let userInfo: UserInfo
 
         enum CodingKeys: String, CodingKey {
             case name
@@ -147,7 +148,7 @@ final class DTOTests: XCTestCase {
         }
     }
     struct UserInfo {
-      @Property(key: "is_admin") let isAdmin: Bool
+      let isAdmin: Bool
       let follower: Int
 
         enum CodingKeys: String, CodingKey {
